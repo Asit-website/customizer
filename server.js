@@ -16,6 +16,10 @@ mongoose.connect('mongodb+srv://shubham:XEhbqsmjt4cnACyz@cluster0.ewetbgm.mongod
   console.error('MongoDB connection error:', err);
 });
 
+app.get("/",(req,res)=>{
+  res.send("hlw worlld")
+})
+
 // Import Product model
 const Product = require('./model/Product');
 
