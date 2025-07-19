@@ -34,6 +34,29 @@ app.post('/api/save-product', async (req, res) => {
   }
 });
 
+// GET endpoint to fetch all products
+app.get('/api/products', async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch products', details: err });
+  }
+});
+
+// GET endpoint to fetch a specific product by ID
+app.get('/api/products/:id', async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch product', details: err });
+  }
+});
+
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

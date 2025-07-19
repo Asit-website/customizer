@@ -112,6 +112,13 @@ const MetadataSchema = new mongoose.Schema({
   hasCustomUpload: Boolean
 }, { _id: false });
 
+const Model3DSchema = new mongoose.Schema({
+  url: String,
+  generatedAt: String,
+  format: String,
+  screenshotUrl: String
+}, { _id: false });
+
 const ProductSchema = new mongoose.Schema({
   id: Number,
   timestamp: String,
@@ -124,7 +131,8 @@ const ProductSchema = new mongoose.Schema({
   imageSettings: ImageSettingsSchema,
   uiState: UiStateSchema,
   metadata: MetadataSchema,
-  screenshot: String
+  screenshot: String,
+  model3D: Model3DSchema
 });
 
 module.exports = mongoose.model('Product', ProductSchema); 
